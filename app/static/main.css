@@ -1,0 +1,6 @@
+.login-image{
+    background-image: url('./signin.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
