@@ -38,6 +38,7 @@ class Receipts(db.Model):
       return f"id: {self.id} , title: {self.title}"
 
 
+
 class Complaints(db.Model):
   """
   """
