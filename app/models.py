@@ -1,6 +1,5 @@
 from datetime import datetime
 from flask_login import UserMixin
-
 from app import db,login_manager
 
 @login_manager.user_loader
@@ -50,3 +49,12 @@ class Complaints(db.Model):
   
   def __repr__(self):
       return f"id: {self.id} , title: {self.title}"
+    
+class Otp(db.Model):
+        
+    """
+    Otp table holds the otp sent to user 
+    """
+    id = db.Column(db.Integer, primary_key=True)
+    otp=db.Column(db.String,nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
