@@ -135,15 +135,16 @@ def account():
     """
     """
     
-    User = User.query.filter_by(user_id=current_user.id)
+    user = User.query.filter_by(id=current_user.id)
     form=UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
             picture=save_picture(form.picture.data)
-            current_user.profile=picture
+            current_user.image_file=picture
              
         current_user.username=form.username.data
         current_user.email=form.email.data
+        current_user.id=form.id.data
 
         db.session.commit()
         flash('Your Account Has been updated!','success')
@@ -153,5 +154,5 @@ def account():
         form.username.data=current_user.username
         form.email.data=current_user.email
     
-    image_file= url_for('static',filename='profiles/'+current_user.profile)
-    return render_template('account.html', title='Account',image_file=image_file,form=form, User = User)
+    image_file= url_for('static',filename='profiles/'+current_user.image_file)
+    return render_template('account.html', title='Account',image_file=image_file,form=form, user = User)

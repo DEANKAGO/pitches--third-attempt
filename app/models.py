@@ -16,7 +16,7 @@ class User(db.Model,UserMixin):
   typeUser= db.Column(db.String,nullable=False) 
   email=db.Column(db.String,nullable=False,unique=True)
   password=db.Column(db.String,nullable=False)
-  image_file=db.Column(db.String(20),nullable=False,default='default.png')
+  image_file=db.Column(db.String(20),nullable=False,default='static/default.jpg')
   post = db.relationship('Receipts', backref='author', lazy=True)
 
   def __repr__(self):
@@ -58,3 +58,5 @@ class Otp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     otp=db.Column(db.String,nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+
