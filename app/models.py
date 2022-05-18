@@ -29,7 +29,6 @@ class Receipts(db.Model):
   account_number=db.Column(db.String,nullable=False)
   amount=db.Column(db.String,nullable=False)
   receipt_image=db.Column(db.String,nullable=False,default='default.png')
-
   date_paid= db.Column(db.Date, nullable=False, default=datetime.utcnow)
   user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
   
