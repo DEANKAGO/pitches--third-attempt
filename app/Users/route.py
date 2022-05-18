@@ -18,7 +18,11 @@ def register():
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(
             form.password.data).decode('utf-8')
-        user = User(username=form.username.data,email=form.email.data, password=hashed_password)
+        user = User(username=form.username.data,email=form.email.data,
+         password=hashed_password,
+         phoneNumber=form.phoneNumber.data,
+         houseNumber=form.houseNumber.data,
+         typeUser='Tenant')
         
         db.session.add(user)
         db.session.commit()
@@ -33,6 +37,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             flash(f'Welcome {user.username.title()} !! ', 'success')

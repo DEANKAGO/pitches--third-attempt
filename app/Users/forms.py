@@ -14,6 +14,10 @@ class Register(FlaskForm):
     """
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
+    houseNumber = StringField('House Number', validators=[DataRequired(), Length(min=2, max=20)])
+    phoneNumber = StringField('Phone Number', validators=[DataRequired(), Length(min=2, max=20)])
+
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Signup')
@@ -36,12 +40,11 @@ class Register(FlaskForm):
                 "That email is already taken! Please choose another")
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
-    remember = BooleanField('Remember')
-    submit = SubmitField('Sign In')
-    
+    remember = BooleanField('Remember Me')
+    submit = SubmitField('Login')
+
 
 class ForgotPassword(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
