@@ -1,0 +1,46 @@
+{% include 'nav.html' %}
+{% extends 'base.html'%}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-5">
+      <!--Display profile photo-->
+      <div>
+        {% if user.image_file %}
+        <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+        {%else%}
+        <p>No profile picture</p>
+        {% endif %}
+
+        <button class="btn btn-primary">Update profile</button>
+      </div>
+
+      <!-- displaying  Username-->
+      <div>
+        <h3> {{user.username| capitalize}} </h3>
+
+      <!-- displaying house id-->
+        <h3>{{user.houseNumber}}</h3>
+        
+      <!-- displaying rent status-->
+          h3>{{user.rent_status}}</h3>
+      </div>
+
+    </div>
+
+    <div class="col-md-5">
+      <h2>Complaints Posted</h2>
+      <div class="card">
+        <div>
+          <h3>Garbage Collection</h3>
+        </div>
+      </div>
+    
+    </div>
+
+  </div>
+</div>
+{% endblock %} -->

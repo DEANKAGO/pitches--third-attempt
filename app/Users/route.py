@@ -128,3 +128,4 @@ def reset(userid):
 # def register():
 #     form = LoginForm()
 #     return render_template('register.html', title='Sign In', form=form)
+
