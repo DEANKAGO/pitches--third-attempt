@@ -117,18 +117,18 @@ def reset(userid):
             flash('Old and new password cannot be the same')
     return render_template('reset_password.html',form=form)
 
-@users.route('/create', methods=['POST', 'GET'])
+@users.route('/receipts', methods=['POST', 'GET'])
 @login_required
 def create():
-    form = post()
+    form = receipts()
     if form.validate_on_submit():
-        post = post(title=form.title.data,
+        receipts = receipts(title=form.title.data,
                       content=form.content.data, user_id=current_user.id,category=form.category.data)
-        db.session.add(post)
+        db.session.add(receipts)
         db.session.commit()
         flash('your request was successful')
         return redirect(url_for('main.home'))
-    return render_template('create.html', form=form, title='New Pitch')
+    return render_template('create.html', form=form, )
 
 
 # @users.route('/index')
