@@ -5,5 +5,4 @@ main= Blueprint('main',__name__)
 @main.route('/')
 def home():
     # All pitches here
-  pass
-
+  return render_template('home.html')
