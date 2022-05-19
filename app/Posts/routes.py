@@ -4,8 +4,8 @@ from flask_login import login_user, current_user, logout_user, login_required
 from app import db, bcrypt, mail
 from flask import render_template, Blueprint, url_for, flash, redirect, request
 from app.Users.utils import save_postsImage
-from app.models import Receipts,Notice
-from app.Posts.forms import ReceiptForm,NoticeForm
+from app.models import Complaints, Receipts,Notice
+from app.Posts.forms import ReceiptForm,NoticeForm,ComplaintsForm
 
 
 posts = Blueprint('posts', __name__)
@@ -51,4 +51,18 @@ def notice():
         flash('your notice has been uploaded successfully')
         return redirect(url_for('main.home'))
     return render_template('notice.html', form=form, title="New Notice")
+
+
+@posts.route('/create/complaints',methods=['GET', 'POST'])
+@login_required
+def create_complaints():
+    form = ComplaintsForm()
+    if form.validate_on_submit():
+
+        notice = Complaints(title=form.title.data,content=form.content.data,user_id=current_user.id,)
+        db.session.add(notice)
+        db.session.commit()
+        flash('your Complaint has been sent')
+        return redirect(url_for('main.home'))
+    return render_template('complaints.html', form=form, title="New Complaint")
 

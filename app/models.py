@@ -19,6 +19,7 @@ class User(db.Model,UserMixin):
   image_file=db.Column(db.String(20),nullable=False,default='static/default.jpg')
   receipt = db.relationship('Receipts', backref='author', lazy=True)
   notice = db.relationship('Notice', backref='noticeAuthor', lazy=True)
+  complaint = db.relationship('Complaints', backref='complaintauthor', lazy=True)
 
   def __repr__(self):
       return f"id: {self.id} , username: {self.username} , email: {self.email} "

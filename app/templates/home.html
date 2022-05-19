@@ -16,68 +16,52 @@
 
   <p class="h3 mb-3">Notices</p>
   <div class="row">
+    {% for notice in notice %}
     <div class="col-md-4">
       <div class="card notice" style="width: 23rem;">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">{{notice.noticeAuthor.username}}</div>
+          </div>
+          <h5 class="card-title">{{notice.title}}</h5>
+          <p class="card-text">{{notice.content}}</p>
 
         </div>
       </div>
 
     </div>
-    <div class="col-md-4">
-      <div class="card notice" style="width: 23rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+    {% endfor %}
 
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-4">
-      <div class="card notice" style="width: 23rem;">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-
-        </div>
-      </div>
-
-    </div>
   </div>
   <p class="h3 mt-5 align-items-center">Complaints</p>
-  <div class=" d-flex flex-wrap flex-row justify-content-center">
+  <div class="container-fluid d-flex flex-wrap flex-row justify-content-center">
+
+  {% for complaint in complaint %}
+  <div class=" pitches card  m-4">
+
+    <div class="row  p-2">
+      <div class="col-md-7 mx-auto mt-auto mb-auto">
+        {% if current_user.id == complaint.complaintauthor.id %}
+
+        {% endif %}
 
 
-
-    <div class=" pitches card  m-4">
-      <div class="row  p-2">
-        <div class="col-md-7 mx-auto mt-auto mb-auto">
-
-          
+        <div class="col-md-3 mx-auto mt-auto mb-auto text-muted">
+          <small>{{complaint.complaintauthor.username}}</small>
+          <br>
+          <!-- <small>{{complaint.date_created}}</small> -->
         </div>
       </div>
+      <div class="card-body">
+        <h5 class="card-title">{{complaint.title}}</h5>
+        <p class="card-text lead">{{complaint.content}}</p>
+     
+      </div>
+
     </div>
 
-    <!-- <div class="row">
-      <div class="col-md-4">
-        <div class="card pitches m-4">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-
-          </div>
-        </div>
-      </div>
-      
-    </div> -->
+    {% endfor %}
   </div>
-</div>
-{% endblock %}
+  </div>
+  {% endblock %}

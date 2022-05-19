@@ -28,3 +28,16 @@ class NoticeForm(FlaskForm):
     
     submit = SubmitField('Post Notice')
     
+
+
+class ComplaintsForm(FlaskForm):
+    """
+    Args:
+        FlaskForm (_type_): _description_
+    """
+    title=StringField('Title of Complaint', validators=[DataRequired()])
+    content=TextAreaField('Complaint Description', validators=[DataRequired(),Length(min=2, max=300)])
+
+    
+    submit = SubmitField('Post Notice')
+    
