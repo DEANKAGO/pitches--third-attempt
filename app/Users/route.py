@@ -4,7 +4,7 @@ from app import  db, bcrypt,mail
 from flask_mail import  Message
 from flask_login import login_user, current_user, logout_user, login_required
 from app.Users.utils import save_picture
-from app.models import User, Otp
+from app.models import Complaints, User, Otp
 import random
 import math
 
@@ -140,6 +140,7 @@ def account():
     """
     
     user = User.query.filter_by(id=current_user.id)
+    post= Complaints.query.filter_by(user_id=current_user.id)
     form=UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -158,4 +159,24 @@ def account():
         form.email.data=current_user.email
     
     image_file= url_for('static',filename='profiles/'+current_user.image_file)
-    return render_template('account.html', title='Account',image_file=image_file,form=form, user = User)
+    return render_template('account.html', title='Account',image_file=image_file,form=form, user = User,post=post )
+
+
+@users.route('/caretaker', methods=['POST', 'GET'])
+def register_caretaker():
+   
+    form = Register()
+    users=User.query.all();
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(
+            form.password.data).decode('utf-8')
+        user = User(username=form.username.data,
+        typeUser="Caretaker",
+        phoneNumber=form.phoneNumber.data, houseNumber='000',
+        email=form.email.data, password=hashed_password)
+        
+        db.session.add(user)
+        db.session.commit()
+        flash(' A Caretaker Has been Created! You are now able to login  in', 'success')
+        return redirect(url_for('main.home'))
+    return render_template('createCaretaker.html', title='Register', form=form,users=users)

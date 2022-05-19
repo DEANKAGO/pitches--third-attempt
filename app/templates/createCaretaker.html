@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container-fluid my-3">
+  <div class="container  receipt-form mt-2 p-3 w-50">
+    <form action="" method="post" enctype="multipart/form-data" class="p-5">
+      {{form.hidden_tag()}}
+      <h3 class="text-center text-white">Create Caretaker</h3>
+
+      <div class="form-group">
+        {{form.username.label(class='form-control-label text-white')}}
+        {% if form.username.errors %}
+        {{form.username(class='form-control is-invalid')}}
+        {% for error in form.username.errors %}
+        <div class="invalid-feedback">
+          {{error}}
+        </div>
+        {% endfor %}
+        {% else %}
+        {{form.username(class='form-control bg-transparent text-white',placeholder="Enter username")}}
+        {% endif %}
+      </div>
+      <div class="form-group mt-3">
+        {{form.email.label(class='form-control-label text-white')}}
+        {% if form.email.errors %}
+        {{form.email(class='form-control is-invalid ')}}
+        {% for error in form.email.errors %}
+        <div class="invalid-feedback">
+          {{error}}
+        </div>
+        {% endfor %}
+        {% else %}
+        {{form.email(class='form-control bg-transparent text-white',placeholder="Enter email")}}
+        {% endif %}
+      </div>
+      <div class="form-group mt-3">
+        {{form.phoneNumber.label(class='form-control-label')}}
+        {% if form.phoneNumber.errors %}
+        {{form.phoneNumber(class='form-control is-invalid')}}
+        {% for error in form.phoneNumber.errors %}
+        <div class="invalid-feedback">
+          {{error}}
+        </div>
+        {% endfor %}
+        {% else %}
+        {{form.phoneNumber(class='form-control bg-transparent all_border mb-2',placeholder="Enter Phone Number")}}
+        {% endif %}
+      </div>
+      <div class="form-group mt-3">
+        {{form.password.label(class='form-control-label text-white')}}
+        {% if form.password.errors %}
+        {{form.password(class='form-control is-invalid ')}}
+        {% for error in form.password.errors %}
+        <div class="invalid-feedback">
+          {{error}}
+        </div>
+        {% endfor %}
+        {% else %}
+        {{form.password(class='form-control bg-transparent text-white',placeholder="Enter password")}}
+        {% endif %}
+      </div>
+      <div class="form-group mt-3">
+        {{form.confirm_password.label(class='form-control-label text-white')}}
+        {% if form.confirm_password.errors %}
+        {{form.confirm_password(class='form-control is-invalid ')}}
+        {% for error in form.confirm_password.errors %}
+        <div class="invalid-feedback">
+          {{error}}
+        </div>
+        {% endfor %}
+        {% else %}
+        {{form.confirm_password(class='form-control bg-transparent text-white',placeholder="Enter confirm password")}}
+        {% endif %}
+      </div>
+
+      <div class="text-center mt-3">
+        {{form.submit(class='btn btn-outline receipt_submit')}}
+      </div>
+  </div>
+  </form>
+
+</div>
+</div>
+{% endblock %}

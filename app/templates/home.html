@@ -7,7 +7,7 @@
       <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>
         Lorem ipsum dolor sit amet consectetur adipisicing.</p>
 
-      <button class="btn btn-secondary mt-4">Upload Receipt</button>
+      <a href="{{url_for('posts.create')}}"><button class="btn btn-secondary mt-4">Upload Receipt</button></a>
     </div>
     <div class="col-md-6">
       <img src="./../static/landingPage.png" alt="">
@@ -39,7 +39,7 @@
   <div class="row mb-5 mt-3">
     {% for complaint in complaint %}
     <div class="col-md-6">
-      <div class="card " style="width: 23rem;">
+      <div class="card complaint my-2" style="width: 23rem;">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6"></div>
@@ -47,20 +47,20 @@
           </div>
           <h5 class="card-title">{{complaint.title}}</h5>
           <p class="card-text">{{complaint.content}}</p>
-  
+
         </div>
       </div>
-  
+
     </div>
     {% endfor %}
   </div>
- 
+
   <p class="h3 mb-5">House To Let</p>
 
   <div class="row my-3 mb-5">
     {% for tolet in tolet %}
     <div class="col-md-6">
-      <div class="card house " style="width: 25rem;">
+      <div class="card house my-2 tolet" style="width: 25rem;">
         <div class="card-body">
 
           <h5 class="card-title">{{tolet.houseType}}</h5>
@@ -84,19 +84,19 @@
 
 </div>
 <div class="foot">
- 
-    <p class="text-white mx-5">Contact Information</p>
+
+  <p class="text-white mx-5">Contact Information</p>
 
   <div class="d-flex mx-5">
-   <div>
-    <p class="text-white" >phone Number</p>
-    <p class="text-white">Email</p>
+    <div>
+      <p class="text-white">phone Number</p>
+      <p class="text-white">Email</p>
 
-   </div>
+    </div>
     <div>
       <p class="mx-5 text-white">+254071234568</p>
 
-    <p class="mx-5 text-white">managenyumba@gmail.com</p>
+      <p class="mx-5 text-white">managenyumba@gmail.com</p>
     </div>
   </div>
 </div>

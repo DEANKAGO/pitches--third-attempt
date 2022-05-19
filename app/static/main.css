@@ -37,9 +37,16 @@ body{
 ::placeholder {
   color: #FFFFFF;
 }
+.tolet{
+  height: 40vh;
+}
+.complaint{
+  height: 30vh;
+}
 .notice{
   background-color: #ECB365;
-  color:#FFFFFF
+  color:#FFFFFF;
+  height:40vh;
 }
 #avatar{
   background-image: url('./default.jpg');

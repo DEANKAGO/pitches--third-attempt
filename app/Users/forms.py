@@ -6,20 +6,21 @@ from flask_wtf.file import FileField, FileAllowed
 from app.models import User
 
 
-
 class Register(FlaskForm):
     """_summary_
     Args:
         Form (_type_): _description_
     """
-    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    username = StringField('Username', validators=[
+                           DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    houseNumber = StringField('House Number', validators=[DataRequired(), Length(min=2, max=20)])
-    phoneNumber = StringField('Phone Number', validators=[DataRequired(), Length(min=2, max=20)])
-
-    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    houseNumber = StringField('House Number', validators=[
+                              DataRequired(), Length(min=2, max=20)])
+    phoneNumber = StringField('Phone Number', validators=[
+                              DataRequired(), Length(min=2, max=20)])
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField('Confirm Password', validators=[
+                                     DataRequired(), EqualTo('password')])
     submit = SubmitField('Signup')
 
     def validate_username(self, username):
@@ -39,6 +40,7 @@ class Register(FlaskForm):
             raise ValidationError(
                 "That email is already taken! Please choose another")
 
+
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -50,29 +52,37 @@ class ForgotPassword(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Reset')
 
+
 class VerifyOtp(FlaskForm):
-    otp=StringField('Otp', validators=[DataRequired()])
+    otp = StringField('Otp', validators=[DataRequired()])
     submit = SubmitField('Verify')
+
 
 class ResetPassword(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField('Confirm Password', validators=[
+                                     DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset')
 
+
 class UpdateAccountForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    username = StringField('Username', validators=[
+                           DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    picture= FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png'])])
+    picture = FileField('Update Profile Picture', validators=[
+                        FileAllowed(['jpg', 'png'])])
     Submit = SubmitField('Update')
 
     def validate_username(self, username):
-        if username.data!=current_user.username:
-            user=User.query.filter_by(username=username.data).first()
+        if username.data != current_user.username:
+            user = User.query.filter_by(username=username.data).first()
             if user:
-                raise ValidationError("That username is taken. Please choose a different one")
+                raise ValidationError(
+                    "That username is taken. Please choose a different one")
 
     def validate_email(self, email):
-        if email.data!=current_user.email:
-            user=User.query.filter_by(email=email.data).first()
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
             if user:
-                raise ValidationError("That email is taken. Please choose a different one")
+                raise ValidationError(
+                    "That email is taken. Please choose a different one")
