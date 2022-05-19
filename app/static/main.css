@@ -14,3 +14,12 @@
   background-color: #ECB365;
   color:#FFFFFF
 }
+#avatar{
+  background-image: url('./default.jpg');
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+}
+
