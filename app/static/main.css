@@ -4,3 +4,13 @@
     background-position: center;
     height: 100vh;
   }
+
+.btn-secondary,.btn-secondary:hover{
+  background-color: #ECB365 !important;
+  border-color: #ECB365 !important;
+  box-shadow:none !important;
+}
+.notice{
+  background-color: #ECB365;
+  color:#FFFFFF
+}
