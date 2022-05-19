@@ -16,7 +16,7 @@ class User(db.Model,UserMixin):
   typeUser= db.Column(db.String,nullable=False) 
   email=db.Column(db.String,nullable=False,unique=True)
   password=db.Column(db.String,nullable=False)
-  image_file=db.Column(db.String(20),nullable=False,default='static/default.jpg')
+  image_file=db.Column(db.String(20),nullable=False,default='default.jpg')
   receipt = db.relationship('Receipts', backref='author', lazy=True)
   notice = db.relationship('Notice', backref='noticeAuthor', lazy=True)
   complaint = db.relationship('Complaints', backref='complaintauthor', lazy=True)
