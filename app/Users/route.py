@@ -148,7 +148,6 @@ def account():
              
         current_user.username=form.username.data
         current_user.email=form.email.data
-        current_user.id=form.id.data
 
         db.session.commit()
         flash('Your Account Has been updated!','success')
