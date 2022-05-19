@@ -17,7 +17,8 @@ class User(db.Model,UserMixin):
   email=db.Column(db.String,nullable=False,unique=True)
   password=db.Column(db.String,nullable=False)
   image_file=db.Column(db.String(20),nullable=False,default='static/default.jpg')
-  post = db.relationship('Receipts', backref='author', lazy=True)
+  receipt = db.relationship('Receipts', backref='author', lazy=True)
+  notice = db.relationship('Notice', backref='noticeAuthor', lazy=True)
 
   def __repr__(self):
       return f"id: {self.id} , username: {self.username} , email: {self.email} "
@@ -31,9 +32,18 @@ class Receipts(db.Model):
   receipt_image=db.Column(db.String,nullable=False,default='default.png')
   date_paid= db.Column(db.Date, nullable=False, default=datetime.utcnow)
   user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-  
+
   def __repr__(self):
       return f"id: {self.id} , title: {self.title}"
+
+class Notice (db.Model):
+  """
+  """
+  id=db.Column(db.Integer,primary_key=True)
+  title=db.Column(db.String,nullable=False)
+  content=db.Column(db.String,nullable=False)
+  date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+  user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 

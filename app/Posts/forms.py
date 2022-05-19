@@ -16,3 +16,15 @@ class ReceiptForm(FlaskForm):
 
     submit = SubmitField('Post Receipt')
     
+
+class NoticeForm(FlaskForm):
+    """
+    Args:
+        FlaskForm (_type_): _description_
+    """
+    title=StringField('Title', validators=[DataRequired()])
+    content=TextAreaField('Description', validators=[DataRequired(),Length(min=2, max=300)])
+
+    
+    submit = SubmitField('Post Notice')
+    
