@@ -20,6 +20,7 @@ class User(db.Model,UserMixin):
   receipt = db.relationship('Receipts', backref='author', lazy=True)
   notice = db.relationship('Notice', backref='noticeAuthor', lazy=True)
   complaint = db.relationship('Complaints', backref='complaintauthor', lazy=True)
+  tolet = db.relationship('Complaints', backref='letAuthor', lazy=True)
 
   def __repr__(self):
       return f"id: {self.id} , username: {self.username} , email: {self.email} "
@@ -70,3 +71,10 @@ class Otp(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
+class ToLet(db.Model):
+  id=db.Column(db.Integer,primary_key=True)
+  houseType=db.Column(db.String,nullable=False)
+  description=db.Column(db.String,nullable=False)
+  rent=db.Column(db.String,nullable=False)
+  date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+  user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

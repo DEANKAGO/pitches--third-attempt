@@ -40,4 +40,16 @@ class ComplaintsForm(FlaskForm):
 
     
     submit = SubmitField('Post Notice')
+
+class ToletForm(FlaskForm):
+    """
+    Args:
+        FlaskForm (_type_): _description_
+    """
+    houseType=StringField('House Type', validators=[DataRequired()])
+    description=TextAreaField('House Description', validators=[DataRequired(),Length(min=2, max=300)])
+    rent=IntegerField('Rent Amount', validators=[DataRequired()])
+
+    
+    submit = SubmitField('Post House')
     

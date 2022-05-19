@@ -1,14 +1,30 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
 .login-image{
     background-image: url('./signin.png');
     background-size: cover;
     background-position: center;
     height: 100vh;
   }
-
+body{
+  overflow-x: hidden;
+}
 .btn-secondary,.btn-secondary:hover{
   background-color: #ECB365 !important;
   border-color: #ECB365 !important;
   box-shadow:none !important;
+}
+.foot{
+  background-color: #064663;
+}
+.house{
+  box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border:none
 }
 .receipt-form {
   background-color: #ECB365;

@@ -34,34 +34,71 @@
     {% endfor %}
 
   </div>
-  <p class="h3 mt-5 align-items-center">Complaints</p>
-  <div class="container-fluid d-flex flex-wrap flex-row justify-content-center">
+  <p class="h3 mt-5 align-items-center ">Complaints</p>
 
-  {% for complaint in complaint %}
-  <div class=" pitches card  m-4">
-
-    <div class="row  p-2">
-      <div class="col-md-7 mx-auto mt-auto mb-auto">
-        {% if current_user.id == complaint.complaintauthor.id %}
-
-        {% endif %}
-
-
-        <div class="col-md-3 mx-auto mt-auto mb-auto text-muted">
-          <small>{{complaint.complaintauthor.username}}</small>
-          <br>
-          <!-- <small>{{complaint.date_created}}</small> -->
+  <div class="row mb-5 mt-3">
+    {% for complaint in complaint %}
+    <div class="col-md-6">
+      <div class="card " style="width: 23rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">{{complaint.letAuthor.username}}</div>
+          </div>
+          <h5 class="card-title">{{complaint.title}}</h5>
+          <p class="card-text">{{complaint.content}}</p>
+  
         </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{{complaint.title}}</h5>
-        <p class="card-text lead">{{complaint.content}}</p>
-     
+  
+    </div>
+    {% endfor %}
+  </div>
+ 
+  <p class="h3 mb-5">House To Let</p>
+
+  <div class="row my-3 mb-5">
+    {% for tolet in tolet %}
+    <div class="col-md-6">
+      <div class="card house " style="width: 25rem;">
+        <div class="card-body">
+
+          <h5 class="card-title">{{tolet.houseType}}</h5>
+          <p class="card-text">{{tolet.description}}</p>
+          <div class=" d-flex justify-content-between">
+            <p></p>
+            <p>Rent {{tolet.rent}} /month</p>
+
+          </div>
+
+        </div>
       </div>
 
     </div>
-
     {% endfor %}
+
   </div>
+
+
+
+
+</div>
+<div class="foot">
+ 
+    <p class="text-white mx-5">Contact Information</p>
+
+  <div class="d-flex mx-5">
+   <div>
+    <p class="text-white" >phone Number</p>
+    <p class="text-white">Email</p>
+
+   </div>
+    <div>
+      <p class="mx-5 text-white">+254071234568</p>
+
+    <p class="mx-5 text-white">managenyumba@gmail.com</p>
+    </div>
   </div>
-  {% endblock %}
+</div>
+
+{% endblock %}

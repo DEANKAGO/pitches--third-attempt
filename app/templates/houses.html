@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container-fluid my-5">
+  <div class="container  receipt-form mt-2 p-3 w-50">
+    <form action="" method="post" enctype="multipart/form-data" class="p-5">
+      {{form.hidden_tag()}}
+      <h3 class="text-center text-white">House To let</h3>
+
+          <div class="form-group">
+            {{form.houseType.label(class='form-control-label text-white')}}
+            {% if form.houseType.errors %}
+            {{form.houseType(class='form-control is-invalid')}}
+            {% for error in form.houseType.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+            {% else %}
+            {{form.houseType(class='form-control bg-transparent text-white',placeholder="Enter the house type")}}
+            {% endif %}
+          </div>
+          <div class="form-group mt-3">
+            {{form.description.label(class='form-control-label text-white')}}
+            {% if form.description.errors %}
+            {{form.description(class='form-control is-invalid ')}}
+            {% for error in form.description.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+            {% else %}
+            {{form.description(class='form-control bg-transparent text-white',placeholder="Enter Description")}}
+            {% endif %}
+          </div>
+          <div class="form-group mt-3">
+            {{form.rent.label(class='form-control-label text-white')}}
+            {% if form.rent.errors %}
+            {{form.rent(class='form-control is-invalid ')}}
+            {% for error in form.rent.errors %}
+            <div class="invalid-feedback">
+              {{error}}
+            </div>
+            {% endfor %}
+            {% else %}
+            {{form.rent(class='form-control bg-transparent text-white',placeholder="Enter Rent Amount")}}
+            {% endif %}
+          </div>
+          <div class="text-center mt-5">
+            {{form.submit(class='btn btn-outline receipt_submit')}}
+          </div>
+        </div>
+         
+
+    
+    </form>
+
+  </div>
+</div>
+{% endblock %}
