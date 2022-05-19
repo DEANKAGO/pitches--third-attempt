@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for receipt in receipt %}
+<p>{{receipt.amount}}</p>
+
+{% endfor %}
+
+{% endblock %}

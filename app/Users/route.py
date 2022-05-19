@@ -3,6 +3,7 @@ from app.Users.forms import LoginForm,Register,ResetPassword,UpdateAccountForm,V
 from app import  db, bcrypt,mail
 from flask_mail import  Message
 from flask_login import login_user, current_user, logout_user, login_required
+from app.Users.utils import save_picture
 from app.models import User, Otp
 import random
 import math
@@ -112,18 +113,6 @@ def reset(userid):
             flash('Old and new password cannot be the same')
     return render_template('reset_password.html',form=form)
 
-@users.route('/receipts', methods=['POST', 'GET'])
-@login_required
-def create():
-    form = receipts()
-    if form.validate_on_submit():
-        receipts = receipts(title=form.title.data,
-                      content=form.content.data, user_id=current_user.id,category=form.category.data)
-        db.session.add(receipts)
-        db.session.commit()
-        flash('your request was successful')
-        return redirect(url_for('main.home'))
-    return render_template('create.html', form=form, )
 
 
 # @users.route('/index')
