@@ -3,9 +3,9 @@
 <div class="container">
   <div class="row align-items-center">
     <div class="col-md-6 ">
-      <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      <p class="h3"> Apollo Apartments</p>
+      <p> We provide the best housing facilities and are concenered <br>
+        about your time here. This is your tool to make living here so <br> much easier</p>
 
       <a href="{{url_for('posts.create')}}"><button class="btn btn-secondary mt-4">Upload Receipt</button></a>
     </div>
@@ -14,11 +14,12 @@
     </div>
   </div>
 
-  <p class="h3 mb-3">Notices</p>
+  <p class="h3 mb-3">N<u class="sect">otic</u>es</p>
+
   <div class="row">
     {% for notice in notice %}
     <div class="col-md-4">
-      <div class="card notice" style="width: 23rem;">
+      <div class="card notice my-3" style="width: 23rem;">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6"></div>
@@ -34,12 +35,13 @@
     {% endfor %}
 
   </div>
-  <p class="h3 mt-5 align-items-center ">Complaints</p>
+  <p class="h3 mb-5 mt-3">Co<u class="sect">mplai</u>nts</p>
+
 
   <div class="row mb-5 mt-3">
     {% for complaint in complaint %}
     <div class="col-md-6">
-      <div class="card complaint my-2" style="width: 23rem;">
+      <div class="card complaint my-3" style="width: 23rem;">
         <div class="card-body">
           <div class="row">
             <div class="col-md-6"></div>
@@ -55,12 +57,12 @@
     {% endfor %}
   </div>
 
-  <p class="h3 mb-5">House To Let</p>
+  <p class="h3 mb-5">Hou<u class="sect">ses To </u> Let</p>
 
   <div class="row my-3 mb-5">
     {% for tolet in tolet %}
     <div class="col-md-6">
-      <div class="card house my-2 tolet" style="width: 25rem;">
+      <div class="card house my-3 tolet" style="width: 25rem;">
         <div class="card-body">
 
           <h5 class="card-title">{{tolet.houseType}}</h5>

@@ -97,6 +97,41 @@
       <p class="display-6 text-center">
         My Notices
       </p>
+      <div class="container-fluid d-flex flex-wrap flex-row justify-content-center">
+        {% for notice in notice %}
+        <div class=" complaints card  m-4">
+
+          <div class="row  p-2">
+            <div class="col-md-7 mx-auto mt-auto mb-auto">
+              {% if current_user.id == notice.noticeAuthor.id %}
+              <div class="d-inline mx-3">
+
+              </div>
+              {% endif %}
+
+            </div>
+            <div class="col-md-2">
+              <img src="{{url_for('static', filename='/profiles/'+notice.noticeAuthor.image_file)}}"
+                class="img-thumbnail img-fluid border border-white" alt="Profile picture">
+            </div>
+            <div class="col-md-3 mx-auto mt-auto mb-auto text-muted">
+              <small>{{notice.noticeAuthor.username}}</small>
+              <br>
+              <small>{{notice.date_created.strftime('%Y-%m-%d')}}</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{notice.title}}</h5>
+            <p class="card-text lead">{{notice.content}}</p>
+           
+          
+          </div>
+
+        </div>
+
+        {% endfor %}
+
+      </div>
     </div>
     {% endif %}
 

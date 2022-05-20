@@ -57,3 +57,15 @@ body{
   border-radius: 50%;
 }
 
+.btn-primary,.btn-primary:hover{
+  background-color: #ECB365 !important;
+  border-color: #ECB365 !important;
+  box-shadow:none !important;
+}
+.sect{
+  text-underline-offset: 6px;
+  text-decoration-color: #ECB365;
+  text-decoration-thickness: 0.3rem ;
+
+
+}

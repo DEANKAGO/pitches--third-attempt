@@ -4,7 +4,7 @@ from app import  db, bcrypt,mail
 from flask_mail import  Message
 from flask_login import login_user, current_user, logout_user, login_required
 from app.Users.utils import save_picture
-from app.models import Complaints, User, Otp
+from app.models import Complaints, User, Otp,Notice
 import random
 import math
 
@@ -141,6 +141,7 @@ def account():
     
     user = User.query.filter_by(id=current_user.id)
     post= Complaints.query.filter_by(user_id=current_user.id)
+    notice = Notice.query.filter_by(user_id=current_user.id)
     form=UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -159,7 +160,7 @@ def account():
         form.email.data=current_user.email
     
     image_file= url_for('static',filename='profiles/'+current_user.image_file)
-    return render_template('account.html', title='Account',image_file=image_file,form=form, user = User,post=post )
+    return render_template('account.html', title='Account',image_file=image_file,form=form, user = User,post=post, notice=notice)
 
 
 @users.route('/caretaker', methods=['POST', 'GET'])
